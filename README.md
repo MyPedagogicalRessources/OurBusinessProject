@@ -1,11 +1,11 @@
 
 # Our Business Project - A spring boot / JPA project
 
-### NOM : DOE
-### Prénom : John
+### NOM : SILVESTRE
+### Prénom : Franck
 ### Groupe de TP : 
-- [ ] 1
-- [x] 2
+- [x] 1
+- [ ] 2
 
 
 ## Consignes sur l'utilisation de Git et Github
