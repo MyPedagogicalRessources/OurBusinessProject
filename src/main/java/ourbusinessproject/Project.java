@@ -1,11 +1,6 @@
 package ourbusinessproject;
-
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 public class Project {
-
 
     @NotEmpty // or @NotNull @NotBlank
     private String title;
