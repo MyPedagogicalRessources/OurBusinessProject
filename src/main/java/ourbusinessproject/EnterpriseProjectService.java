@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.HashSet;
 
 @Service
 public class EnterpriseProjectService {
@@ -21,6 +22,7 @@ public class EnterpriseProjectService {
 
     /**
      * Set the entity manager
+     *
      * @param entityManager the new entity manager
      */
     public void setEntityManager(EntityManager entityManager) {
@@ -29,14 +31,21 @@ public class EnterpriseProjectService {
 
     /**
      * Save a project in the DB
+     *
      * @param project the project to save
      */
     public void save(Project project) {
+        Enterprise enterprise = project.getEnterprise();
+        if (enterprise != null) {
+            enterprise.addProject(project);
+            saveProjectOrEnterprise(enterprise);
+        }
         saveProjectOrEnterprise(project);
     }
 
     /**
      * Save an enterprise in the DB
+     *
      * @param enterprise the enterprise to save
      */
     public void save(Enterprise enterprise) {
@@ -50,6 +59,7 @@ public class EnterpriseProjectService {
 
     /**
      * Find a project given its id
+     *
      * @param anId the id of the requested project
      * @return the project corresponding with the given id
      */
@@ -59,6 +69,7 @@ public class EnterpriseProjectService {
 
     /**
      * Find a enterprise given its id
+     *
      * @param anId the id of the requested enterprise
      * @return the enterprise corresponding with the given id
      */
