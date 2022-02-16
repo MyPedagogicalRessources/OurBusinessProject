@@ -58,10 +58,17 @@ public class Project {
         return id;
     }
 
+    /**
+     * Set the enterprise owning the project
+     * @param enterprise the new enterprise
+     */
     public void setEnterprise(Enterprise enterprise) {
         this.enterprise = enterprise;
     }
 
+    /**
+     * @return the enterprise owner of the project
+     */
     public Enterprise getEnterprise() {
         return enterprise;
     }

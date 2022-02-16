@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.Collection;
+import java.util.HashSet;
 
 @Entity
 public class Enterprise {
@@ -21,6 +23,8 @@ public class Enterprise {
     @Id
     @GeneratedValue
     private Long id;
+
+    private Collection<Project> projects;
 
     /**
      * @return the name
@@ -88,4 +92,13 @@ public class Enterprise {
     public Long getId() {
         return id;
     }
+
+    /**
+     *
+     * @return the projects owned by the enterprise
+     */
+    public Collection<Project> getProjects() {
+        return projects;
+    }
+
 }
