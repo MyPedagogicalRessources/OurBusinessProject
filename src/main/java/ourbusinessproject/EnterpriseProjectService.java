@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class EnterpriseProjectService {
@@ -75,5 +77,15 @@ public class EnterpriseProjectService {
      */
     public Enterprise findEnterpriseById(Long anId) {
         return this.entityManager.find(Enterprise.class, anId);
+    }
+
+    /**
+     * Find all projects
+     * @return the list of all projects ordered by title
+     */
+    public List<Project> findAllProjects() {
+        String query = "select p from Project p order by p.title";
+        TypedQuery<Project> typedQuery = entityManager.createQuery(query, Project.class);
+        return typedQuery.getResultList();
     }
 }

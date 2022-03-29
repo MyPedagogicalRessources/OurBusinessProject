@@ -24,6 +24,23 @@ public class Project {
     private Enterprise enterprise;
 
     /**
+     * Create and initialize a Project
+     * @param title the title of the Project
+     * @param description the description of the Project
+     * @param enterprise the Enterprise attached to the Project
+     */
+    public Project(String title, String description, Enterprise enterprise) {
+        this.title = title;
+        this.description = description;
+        this.enterprise = enterprise;
+    }
+
+    /**
+     * Create a Project
+     */
+    public Project() {}
+
+    /**
      * @return the title
      */
     public String getTitle() {
