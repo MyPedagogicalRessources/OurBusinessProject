@@ -30,6 +30,7 @@ public class InitializationService {
         project1E2 = new Project("p1E2","P1E2 desc",enterprise2);
         enterpriseProjectService.save(project1E2);
         project2E1 = new Project("p2E1","P2E1 desc",enterprise1);
+        //project2E1 = new Project("","P2E1 desc",enterprise1);
         enterpriseProjectService.save(project2E1);
     }
 
