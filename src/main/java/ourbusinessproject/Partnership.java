@@ -1,19 +1,31 @@
 package ourbusinessproject;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+/**
+ * Entity Partnership
+ */
+@Entity
 public class Partnership {
     @NotNull
     private Date creationDate;
-    @NotNull
+
+    @NotNull @ManyToOne
     private Enterprise enterprise;
-    @NotNull
+
+    @NotNull @ManyToOne
     private Project project;
+
+    @Id @GeneratedValue
     private Long id;
 
     public Partnership(Long id) {
         this.id = id;
+    }
+
+    public Partnership() {
     }
 
     public void setCreationDate(Date creationDate) {
@@ -38,5 +50,14 @@ public class Partnership {
 
     public Project getProject() {
         return project;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    @PrePersist
+    public void onCreate() {
+        this.creationDate = new Date();
     }
 }
