@@ -1,12 +1,16 @@
 package ourbusinessproject;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import ourbusinessproject.repositories.PartnerRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,6 +19,9 @@ import java.util.List;
 @Service
 @Transactional
 public class PartnershipService {
+
+    @Autowired
+    private PartnerRepository partnerRepository;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -75,5 +82,15 @@ public class PartnershipService {
             query = entityManager.createQuery(jpqlQuery,Partnership.class);
         }
         return query.getResultList();
+    }
+
+    /**
+     * Search engine or partnerships
+     * @param partnershipExample the Example of partnership used to perform the query
+     * @param pageable the object descriping page and ordering
+     * @return the list of found partnership
+     */
+    public Page<Partnership> search(Example<Partnership> partnershipExample, Pageable pageable) {
+        return partnerRepository.findAll(partnershipExample,pageable);
     }
 }
