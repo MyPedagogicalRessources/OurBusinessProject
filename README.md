@@ -30,8 +30,8 @@ Sélectionnez les dépendances suivantes :
 
     - I/O > Validation
     - Web > Rest Repositories
-    - SQL > JPA
-    - SQL > H2
+    - SQL > Spring Data JPA
+    - SQL > H2 Database
 
     Étudiez le fichier « pom.xml » et l'arborescence générés.
 
