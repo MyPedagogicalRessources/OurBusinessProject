@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * A project is a business idea that an entrepreneur wants to develop.
@@ -17,6 +18,8 @@ public class Project {
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotNull private Enterprise enterprise;
 
     /**
      * Set the title of the project
@@ -56,5 +59,21 @@ public class Project {
      */
     public Long getId() {
         return id;
+    }
+
+    /**
+     * Set the enterprise of the project
+     * @param enterprise the enterprise of the project
+     */
+    public void setEnterprise(Enterprise enterprise) {
+        this.enterprise = enterprise;
+    }
+
+    /**
+     * Get the enterprise of the project
+     * @return the enterprise of the project
+     */
+    public Enterprise getEnterprise() {
+        return enterprise;
     }
 }
