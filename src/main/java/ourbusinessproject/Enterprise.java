@@ -3,9 +3,13 @@ package ourbusinessproject;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+
+import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * An enterprise is a company that is a project partner.
@@ -21,6 +25,8 @@ public class Enterprise {
     @Id
     @GeneratedValue
     private Long id;
+    @OneToMany(mappedBy = "enterprise")
+    private Collection<Project> projects;
 
     /**
      * Set the name of the enterprise
@@ -92,5 +98,23 @@ public class Enterprise {
      */
     public Long getId() {
         return id;
+    }
+
+    /**
+     * Get the projects of the enterprise
+     * @return the projects of the enterprise
+     */
+    public Collection<Project> getProjects() {
+        return projects;
+    }
+
+    /**
+     * Add a project to the enterprise
+     * @param project the project to add
+     */
+    public void addProject(Project project) {
+        if (projects == null)
+            projects = new HashSet<>();
+        this.projects.add(project);
     }
 }
