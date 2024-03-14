@@ -3,6 +3,7 @@ package ourbusinessproject;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -19,6 +20,7 @@ public class Project {
     @GeneratedValue
     private Long id;
 
+    @ManyToOne
     @NotNull private Enterprise enterprise;
 
     /**
