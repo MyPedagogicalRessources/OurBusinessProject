@@ -1,17 +1,21 @@
 package ourbusinessproject;
 
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 
+@Entity
 public class Partnership {
     @NotNull
     private Date creationDate;
-    @NotNull
+    @NotNull @ManyToOne
     private Enterprise enterprise;
-    @NotNull
+    @NotNull @ManyToOne
     private Project project;
+
+    @Id  @GeneratedValue
     private Long id;
 
     /**
@@ -74,5 +78,13 @@ public class Partnership {
      */
     public Long getId() {
         return id;
+    }
+
+    /**
+     * Set the creation date to the current date
+     */
+    @PrePersist
+    public void onCreate() {
+        this.creationDate = new Date();
     }
 }
