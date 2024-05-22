@@ -20,6 +20,11 @@ public class InitializationService {
      */
     @Autowired
     private EnterpriseProjectService enterpriseProjectService;
+    @Autowired
+    private PartnershipService partnershipService;
+    private Partnership partnershipP1E1WithE2;
+    private Partnership partnershipP1E2WithE1;
+    private Partnership partnershipP2E1WithE2;
 
     /**
      * Initialization of the initial list of projects
@@ -45,6 +50,13 @@ public class InitializationService {
                 "My comp2 description",
                 "comp2 contact name",
                 "comp2@com.com");
+    }
+
+    @Transactional
+    public void initPartnerships() {
+        partnershipP1E1WithE2 = partnershipService.newPartnership(project1E1, enterprise2);
+        partnershipP1E2WithE1 = partnershipService.newPartnership(project1E2, enterprise1);
+        partnershipP2E1WithE2 = partnershipService.newPartnership(project2E1, enterprise2);
     }
 
     /**
@@ -80,5 +92,26 @@ public class InitializationService {
      */
     public Enterprise getEnterprise2() {
         return enterprise2;
+    }
+
+    /**
+     * @return the partnershipP1E1WithE2
+     */
+    public Partnership getPartnershipP1E1WithE2() {
+        return partnershipP1E1WithE2;
+    }
+
+    /**
+     * @return the partnershipP1E2WithE1
+     */
+    public Partnership getPartnershipP1E2WithE1() {
+        return partnershipP1E2WithE1;
+    }
+
+    /**
+     * @return the partnershipP2E1WithE2
+     */
+    public Partnership getPartnershipP2E1WithE2() {
+        return partnershipP2E1WithE2;
     }
 }
