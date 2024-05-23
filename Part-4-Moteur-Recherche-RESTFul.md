@@ -7,7 +7,7 @@ Un partenariat décrit le partenariat réalisé par une entreprise sur un projet
 1. Créez la classe du domaine «ourbusinessproject.Partnership » et la classe de test associée « PartnershipTest ».
 
 2. Modifiez le contenu du fichier « PartnershipTest .java»  de telle sorte qu'il soit identique aux contenus disponibles ici :
-https://gist.github.com/FranckSilvestre/b16351c08429e0b54486db7484614f31 
+   https://gist.github.com/FranckSilvestre/21a575ff0da1eabb40df5fb63b31ae8e
 
 3. Modifiez le contenu de la classe Partnership pour que les tests de la classe  PartnershipTest  passent.
 
@@ -18,7 +18,7 @@ https://gist.github.com/FranckSilvestre/b16351c08429e0b54486db7484614f31
 1. Créez la classe «ourbusinessproject.PartnershipService » et la classe de test associée « PartnershipServiceIntegrationTest ».
 
 2. Modifiez le contenu de la  classe de test pour qu'elle soit identique au contenu disponible ici :
-https://gist.github.com/FranckSilvestre/0271d99713422874a4c6f42ccc16b0ce 
+   https://gist.github.com/FranckSilvestre/b213019b47221a01124f32eec691341a
 
 3. Modifiez la classe « PartnershipService » pour que les tests passent.
 
@@ -29,8 +29,8 @@ https://gist.github.com/FranckSilvestre/0271d99713422874a4c6f42ccc16b0ce
 Afin de disposer de quelques Partnership  au lancement de l'application nous allons mettre en place la création de ces partnerships en nous appuyant sur les classes Bootstrap et InitialisationService introduites dans la partie 2.
 
 1. Modifiez le contenu des fichiers BootstrapTest.java et PartnershipServiceIntegrationTest.java pour qu'ils soient identiques aux fichiers disponibles ici :
-https://gist.github.com/FranckSilvestre/8d596100c05fb091df0b3730a5f8fcc3 
-https://gist.github.com/FranckSilvestre/b4c6636627477bb4967e03a7333c06d0  
+   https://gist.github.com/FranckSilvestre/dbad939898249b7b600d50ba4ff44e22  
+   https://gist.github.com/FranckSilvestre/a3b5ecf96375adaef24fcd1d049f0c3a
 
 2. Lancez les tests et constatez que certains tests ne passent plus.
 
@@ -45,8 +45,8 @@ Cet exercice vise la mise en place un Web service permettant d'ajouter et de sup
 1. Créez la classe PartnershipController. Annotez la classe de l'annotation
 org.springframework.web.bind.annotation.RestController.
 Créez les deux classes de tests PartnershipControllerTest et PartnershipControllerIntegrationTest. Modifiez les contenus de ces deux classes pour qu'ils correspondent aux contenus disponibles en ligne :
-	https://gist.github.com/FranckSilvestre/b3c70a792a47d8f950fe0c652157b605 
-	https://gist.github.com/FranckSilvestre/cfbf22696ba1b5690bb4267dd11563d0 
+   https://gist.github.com/FranckSilvestre/3d77b640b6a1c0fa0d15f5fcf95c2ad9  
+   https://gist.github.com/FranckSilvestre/aa1d2c1c86424910f304bb2ec93f520e
 
 2. Lancez les tests et constatez que certains tests ne passent plus.
 
@@ -55,25 +55,7 @@ Créez les deux classes de tests PartnershipControllerTest et PartnershipControl
 > fix #4.4 REST controller OK
 
 
-## 5. Dans les arcanes du mapping objet/relationnel...
-
-1. Dans la méthode qui teste l'ajout d'un partnership, pour vérifier que le partnership obtenu est lié à la bonne entreprise, le code utilisé est  le suivant :
-
-    assertThat(fetchedPartnership.getEnterprise().getId(), is(partnerEnterprise.getId()));
-	
-Pourquoi ne pas avoir écrit directement 
-	assertThat(fetchedPartnership.getEnterprise(), 			is(partnerEnterprise));?
-	
-Comment faire pour pouvoir écrire une telle égalité ? 
-	
-La réponse se trouve quelque part par là :
-	https://access.redhat.com/documentation/en-US/JBoss_Enterprise_Application_Platform/4.3/html/Hibernate_Reference_Guide/Persistent_Classes-Implementing_equals_and_hashCode.html 
-
-2. Expliquez en 10 lignes maximum ce que vous avez retenu de votre investigation.
-
-> fix #4.5 arcanes ORM
-
-## 6. Le moteur de recherche sur les Partnerships 
+## 5. Le moteur de recherche sur les Partnerships 
 
 Nous allons à présent mettre en place un moteur de recherche sur les Partnerships.
 
@@ -88,5 +70,5 @@ Enfin le web service doit supporter la spécification de l'ordre de tri des rés
 
 Concevez et mettez en œuvre la solution qui vous semble la plus optimale.
 
-> fix #4.6 search engine
+> fix #4.5 search engine
 
