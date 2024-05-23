@@ -2,9 +2,11 @@ package ourbusinessproject;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 /**
@@ -49,5 +51,37 @@ public class PartnershipService {
      */
     public void remove(Partnership partnership) {
         entityManager.remove(partnership);
+    }
+
+    /**
+     * Search engine or partnerships
+     *
+     * @param projectTitle the project title of the searched partnerships
+     * @param enterpriseName the enterprise name of the searched partnerships
+     * @return the list of found partnership
+     */
+    public List<Partnership> search(String projectTitle, String enterpriseName) {
+        String jpqlQuery = null;
+        TypedQuery<Partnership> query = null;
+        if (projectTitle != null && !projectTitle.isBlank()) {
+            if (enterpriseName != null && !enterpriseName.isBlank()) {
+                jpqlQuery = "select part from Partnership part where part.project.title like :projectTitle and part.enterprise.name like :enterpriseName order by part.project.title";
+                query = entityManager.createQuery(jpqlQuery,Partnership.class);
+                query.setParameter("projectTitle", projectTitle);
+                query.setParameter("enterpriseName", enterpriseName);
+            } else {
+                jpqlQuery = "select part from Partnership part where part.project.title like :projectTitle order by part.project.title";
+                query = entityManager.createQuery(jpqlQuery,Partnership.class);
+                query.setParameter("projectTitle", projectTitle);
+            }
+        } else if (enterpriseName != null && !enterpriseName.isBlank()) {
+            jpqlQuery = "select part from Partnership part where part.enterprise.name like :enterpriseName order by part.project.title";
+            query = entityManager.createQuery(jpqlQuery, Partnership.class);
+            query.setParameter("enterpriseName", enterpriseName);
+        } else {
+            jpqlQuery = "select part from Partnership part order by part.project.title";
+            query = entityManager.createQuery(jpqlQuery,Partnership.class);
+        }
+        return query.getResultList();
     }
 }
