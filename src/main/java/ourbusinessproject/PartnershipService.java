@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
  * Service to manage PartnerShip entities
  */
 @Service
+@Transactional
 public class PartnershipService {
 
     @PersistenceContext
