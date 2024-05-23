@@ -4,7 +4,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import ourbusinessproject.repositories.PartnerRepository;
 
 import java.util.List;
 
@@ -18,6 +23,9 @@ public class PartnershipService {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    private PartnerRepository partnerRepository;
 
     /**
      * Create a new partnership
@@ -83,5 +91,16 @@ public class PartnershipService {
             query = entityManager.createQuery(jpqlQuery,Partnership.class);
         }
         return query.getResultList();
+    }
+
+
+    /**
+     * Search engine or partnerships
+     * @param partnershipExample the Example of partnership used to perform the query
+     * @param pageable the object descriping page and ordering
+     * @return the list of found partnership
+     */
+    public Page<Partnership> search(Example<Partnership> partnershipExample, Pageable pageable) {
+        return partnerRepository.findAll(partnershipExample,pageable);
     }
 }
